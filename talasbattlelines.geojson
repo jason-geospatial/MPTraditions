@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "talasbattlelines",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": "b81b57d4ff96c3c1a70b36a8331b97b8", "_rev": "4-cb8a37c6ec16e5a9b22db3affe0684d1", "name": "Arab forces advance", "description": "Arab forces were encamped nearby and were freshly rested for the battle.", "color": "#228B22" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 72.232789292865391, 42.55638825936574 ], [ 72.36737181237784, 42.540200836205052 ], [ 72.458009019397025, 42.570548811059837 ], [ 72.573365464693268, 42.562457460794384 ], [ 72.694215074051272, 42.53008156508097 ], [ 72.875489488088746, 42.489588084388984 ] ] ] } },
+{ "type": "Feature", "properties": { "id": "b81b57d4ff96c3c1a70b36a8331b8a4e", "_rev": "4-9789a11f56e8f0de78f08a896cee20ed", "name": "Chinese advance", "description": "Chinese forces were on the march and likely disorganized to start the battle.", "color": "#228B22" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 71.713685289031858, 42.635241828513159 ], [ 71.798829331988372, 42.604925340723639 ], [ 71.897706285100213, 42.592794612647886 ], [ 72.00207640227292, 42.572571484640349 ], [ 72.00207640227292, 42.576616635015583 ] ] ] } },
+{ "type": "Feature", "properties": { "id": "b81b57d4ff96c3c1a70b36a8331b7c6d", "_rev": "2-34d6b7283fba204d705c7dfa888ef52a", "name": "Chinese retreat to Taraz", "description": "Chinese forces were defeated and retreated back to nearby Taraz.", "color": "#ff0000" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ 72.070740953045032, 42.596838451073474 ], [ 71.996583238211159, 42.651404586224722 ], [ 71.82629515229722, 42.734172809877037 ], [ 71.710938707000963, 42.780555465874606 ], [ 71.606568589828257, 42.792649579211236 ], [ 71.570863023426767, 42.822874524715338 ], [ 71.513184800778205, 42.855098187516276 ], [ 71.436280503914347, 42.881267539170686 ] ] ] } }
+]
+}

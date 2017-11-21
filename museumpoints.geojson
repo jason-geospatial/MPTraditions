@@ -1,0 +1,15 @@
+{
+"type": "FeatureCollection",
+"name": "museumpoints",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": "node\/792604797", "name": "Geological Museum", "type": "museum", "color": null }, "geometry": { "type": "Point", "coordinates": [ 74.5872091, 42.8762079 ] } },
+{ "type": "Feature", "properties": { "id": "node\/1838595735", "name": "Музей Чынгыза Айтматова", "type": "museum", "color": null }, "geometry": { "type": "Point", "coordinates": [ 74.608362, 42.8661615 ] } },
+{ "type": "Feature", "properties": { "id": "node\/1915699437", "name": "Музей под открытым небом АХКР", "type": "museum", "color": null }, "geometry": { "type": "Point", "coordinates": [ 74.5393648, 42.8514541 ] } },
+{ "type": "Feature", "properties": { "id": "node\/4041305228", "name": "Музей искусства и литературы им. Тогтогула", "type": "museum", "color": null }, "geometry": { "type": "Point", "coordinates": [ 74.6018129, 42.8724571 ] } },
+{ "type": "Feature", "properties": { "id": "node\/4085389965", "name": "Zoological Museum", "type": "museum", "color": null }, "geometry": { "type": "Point", "coordinates": [ 74.5803469, 42.8774817 ] } },
+{ "type": "Feature", "properties": { "id": "node\/4085457640", "name": "Sadykow-Kunst Museum", "type": "museum", "color": null }, "geometry": { "type": "Point", "coordinates": [ 74.5958205, 42.8793946 ] } },
+{ "type": "Feature", "properties": { "id": "node\/4085460939", "name": "Дом-музей А.Токомбаева", "type": "museum", "color": null }, "geometry": { "type": "Point", "coordinates": [ 74.6044514, 42.8661551 ] } },
+{ "type": "Feature", "properties": { "id": "node\/4085475189", "name": "Tchuikow-Museum", "type": "museum", "color": null }, "geometry": { "type": "Point", "coordinates": [ 74.6102871, 42.8656602 ] } }
+]
+}

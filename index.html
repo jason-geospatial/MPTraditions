@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Traditional Practices Kyrgyzstan</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.js'></script>
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/turf/v2.0.0/turf.min.js' charset='utf-8'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+
+<style>
+#map {
+    position: fixed;
+    width:50%;
+}
+#features {
+    width: 50%;
+    margin-left: 50%;
+    font-family: sans-serif;
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+section {
+    padding:  25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 13px;
+}
+section.active {
+    opacity: 1;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 200px;
+}
+    #info {
+        
+        position: relative;
+        margin: 0px auto;
+        width: 50%;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        font-size: 12px;
+        text-align: center;
+        color: #222;
+        background: #fff;
+    }
+    .mapboxgl-popup {
+        max-width: 400px;
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    }
+</style>
+
+<div id='map'></div>
+<pre id="info"></pre>
+<div id='features'>
+    <section id='intro' class='active'>
+        <h3>Welcome to Kyrgyzstan</h3>
+        <p>Lying on the ancient Silk Road, Kyrgyzstan is a modern day mixture of different cultures. Further mixed after mass migrations during the Soviet Era, Kyrgyz traditions are the expression of a people remembering the past while embracing their modern independence. </p>
+       
+    </section>
+    <section id='bishkek' class='active'>
+        <br><br><br>
+        <h3>Bishkek - The city that stirs the drink</h3>
+        <p>Bishkek is the capital of Kyrgyzstan. Previously called Frunze, the name refers to the stick used to stir the Kyrgyz national drink: kumiz (fermented horse milk). Visit the numerous museums around the city to see artifacts and art from Kyrgyzstan throughout different eras.</p>
+        <img src="https://kalpak-travel.com/wp-content/uploads/2017/03/48-Main-Chuy-street-Bishkek.jpg" height=300px>
+    </section>
+    <section id='talas'>
+        <br><br><br>
+        <h3>Talas - A Meeting of Arab and Chinese Worlds</h3>
+        <p>The Talas Valley is known as the site of the battle of 751 between the forces of the Abbasid Caliphate and Turgesh Khanate from one side, and the army of Tang China from the other, for control over Central Asia. The reign of the Tang Dynasty in China (618 — 907) was marked by a significant expansion of the zone of Chinese influence. It successfully regained the land that had been previously lost, and strengthened its position in the Tibetan border. In 740-s China gained control over Kabul and Kashmir. As its army moved north and west in 751, it met a joint army and was defeated in the only battle between Arab and Chinese troops. The battle took place on the Talas riverbanks, near the city of Taraz (Jambul), Kazakhstan. From this battle, Chinese paper-making technology was captured and introduced to the Islamic world.</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/vPemqOU3n7M" frameborder="0" allowfullscreen></iframe>
+    </section>
+    <section id='beshbarmak'>
+        <br><br><br>
+        <h3>Beshbarmak in Naryn</h3>
+        <p>Naryn is dominated by mountainous pastures, resulting in many herding families. To avoid overgrazing their pastures, families would establish traditional routes through remote pastures during the summer. Areas near villages were saved as pastures to be used in winter. Families raised horses as a source of income and also to travel between remote pastures. Horse meat is also used in <i>beshbarmak</i>, a traditional dish of nomadic peoples of Central Asia. The prominence of meat and dairy in nomadic cuisine reflect the main livelihood activities they depended on. </p>
+        <img src="https://photos.smugmug.com/Asia/Kyrgyzstan/Jyrgalan-Trek-Kyrgyzstan/i-TvmwzLw/0/81898d9c/O/DSC_6571.jpg" height=300px>
+    </section>
+    <section id='issyk-kul'>
+        <br><br><br>
+        <h3>Issyk-kul</h3>
+        <p>Issyk-kul is famous for its deep lake ringed by valleys and mountains. Tourism in the summer months brings a festive air, with both locals looking to escape the heat and foreigners hoping to hike the mountains. Yurt workshops and eagle hunters allow tourists to experience colourful aspects of Kyrgyz culture.</p>
+        <img src="http://www.bradtguides.com/media/wysiwyg/destinations/asia/kyrgyzstan/Lake_Issyk_kyrgyzstan.jpg">
+    </section>
+    <section id='osh'>
+        <br><br><br>
+        <h3>Osh - The Cultural Capital</h3>
+        <p>Osh is Kyrgyzstan's cultural capital in the south. A diverse mix of of Uzbek, Tajik, and Kyrgyz traders come to buy and sell their wares.</p>
+        <img src="http://kabar.kg/eng/site/assets/files/3582/654_730x0.730x0.jpg" height=300px><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </section>
+    
+    
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibWFkc2tpaWVyIiwiYSI6ImNpb2ZnaXVteTAwM3p2cGo3aHhqYnBkbWMifQ.cEswY6uB1-saGXwbS82DWA';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v9',
+    center: [74.378753, 41.301072],
+    zoom: 6,
+    bearing: -15,
+    pitch: 45
+});
+
+var chapters = {
+    'intro': {
+        bearing: -15,
+        center: [74.378753, 41.301072],
+        zoom: 6,
+        pitch: 45
+    },
+    'bishkek': {
+        bearing: 27,
+        center: [74.604101, 42.8749707],
+        zoom: 10.5,
+        pitch: 40
+    },
+    'talas': {
+        duration: 6000,
+        center: [72.24544, 42.510189],
+        bearing: 10,
+        zoom: 8,
+        pitch: 0
+    },
+    'beshbarmak': {
+        bearing: 45,
+        center: [76.00499, 41.42355],
+        zoom: 10,
+        pitch: 20,
+        speed: 0.5
+    },
+    'issyk-kul': {
+        bearing: 15,
+        center: [77.0574028189, 42.6472885],
+        zoom: 13,
+        speed: 0.6,
+        pitch: 40
+    },
+    'osh': {
+        bearing: 45,
+        center: [72.7959399, 40.5354278],
+        zoom: 12
+    }
+    
+};
+
+// On every scroll event, check which element is on screen
+window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+    for (var i = 0; i < chapterNames.length; i++) {
+        var chapterName = chapterNames[i];
+        if (isElementOnScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+
+var activeChapterName = 'intro';
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+
+    map.flyTo(chapters[chapterName]);
+
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+
+    activeChapterName = chapterName;
+}
+
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+
+//get coordinates of mouse pointer
+map.on('mousemove', function (e) {
+    document.getElementById('info').innerHTML =
+        // e.point is the x, y coordinates of the mousemove event relative
+        // to the top-left corner of the map
+        JSON.stringify(e.point) + '<br />' +
+        // e.lngLat is the longitude, latitude geographical position of the event
+        JSON.stringify(e.lngLat);
+});
+
+/// try to animate point on line
+var chineseOrigin = [71.713685289031858, 42.635241828513159];
+var chineseDestination =[72.00207640227292, 42.576616635015583];
+// A simple line from origin to destination.
+var route = {
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "geometry": {
+            "type": "LineString",
+            "coordinates": [
+                chineseOrigin,
+                chineseDestination
+            ]
+        }
+    }]
+};
+// A single point that animates along the route.
+// Coordinates are initially set to origin.
+var point = {
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": chineseOrigin
+        }
+    }]
+};
+
+var arc=[[ 71.713685289031858, 42.635241828513159 ], [ 71.798829331988372, 42.604925340723639 ], [ 71.897706285100213, 42.592794612647886 ], [ 72.00207640227292, 42.572571484640349 ], [ 72.00207640227292, 42.576616635015583 ]];
+map.on('load', function() {
+    //load icon images
+    map.loadImage('https://cdn4.iconfinder.com/data/icons/touristic-1/512/British-Museum.png', function(error, image) {
+        if (error) throw error;
+        map.addImage('museum', image);
+    });
+    //Load external GeoJSON files
+    map.addSource("lines", {
+            "type": "geojson",
+            "data": "talasbattlelines.geojson"
+    });
+    map.addSource("polygons", {
+            "type": "geojson",
+            "data": "talasbattlepoly.geojson"
+    });
+    map.addSource("points", {
+            "type": "geojson",
+            "data": "museumpoints.geojson"
+    });
+    
+    //start adding layers
+    map.addLayer({
+            "id": "lines",
+            "type": "line",
+            "source": "lines",
+            "paint":{
+                "line-color":{"type":"identity","property":"color"},
+                "line-width":3
+            }  
+    });
+    map.addLayer({
+            "id": "polygons",
+            "type": "fill",
+            "source": "polygons",
+            "paint":{
+                "fill-color":{"type":"identity","property":"color"},
+                "fill-opacity":0.8
+            },  
+        });
+    map.addLayer({
+            "id": "points",
+            "type": "symbol",
+            "source": "points",
+            "layout":{
+                "icon-image":"museum",
+                "icon-size":0.05,
+                "icon-allow-overlap":true
+            }
+        });
+
+    //continuation of animating point on line
+    // Update the route with calculated arc coordinates
+route.features[0].geometry.coordinates = arc;
+
+// Used to increment the value of the point measurement against the route.
+var counter = 0;
+var lineDistance = turf.lineDistance(route.features[0], 'kilometers');
+
+map.addSource('route', {
+        "type": "geojson",
+        "data": route
+    });
+
+    map.addSource('point', {
+        "type": "geojson",
+        "data": point
+    });
+
+    map.addLayer({
+        "id": "route",
+        "source": "route",
+        "type": "line",
+        "paint": {
+            "line-width": 2,
+            "line-color": "#007cbf"
+        }
+    });
+
+    map.addLayer({
+        "id": "point",
+        "source": "point",
+        "type": "symbol",
+        "layout": {}
+    });
+     function animate() {
+        // Update point geometry to a new position based on counter denoting
+        // the index to access the arc.
+        point.features[0].geometry.coordinates = route.features[0].geometry.coordinates[counter];
+
+        // Update the source with this new data.
+        map.getSource('point').setData(point);
+
+        // Request the next frame of animation so long as destination has not
+        // been reached.
+        if (point.features[0].geometry.coordinates[0] !== chineseDestination[0]) {
+            requestAnimationFrame(animate);
+        }
+
+        counter = counter + 1;
+    }
+
+    // Start the animation.
+    animate(counter);
+      // Create a popup, but don't add it to the map yet.
+    var popup = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+
+    map.on('mouseenter', 'polygons', function(e) {
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+
+        // Populate the polygon popup and set its coordinates
+        // based on the feature found.
+        popup.setLngLat(e.lngLat)
+            .setHTML('<b>' + e.features[0].properties.name + '</b><br>' + e.features[0].properties.description)
+            .addTo(map);
+    });
+
+    map.on('mouseleave', 'polygons', function() {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+    map.on('mouseenter', 'lines', function(e) {
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+
+        // Populate the line popup and set its coordinates
+        // based on the feature found.
+        popup.setLngLat(e.lngLat)
+            .setHTML('<b>' + e.features[0].properties.name + '</b><br>' + e.features[0].properties.description)
+            .addTo(map);
+    });
+
+    map.on('mouseleave', 'lines', function() {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+     map.on('mouseenter', 'points', function(e) {
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+
+        // Populate the line popup and set its coordinates
+        // based on the feature found.
+        popup.setLngLat(e.lngLat)
+            .setHTML('<b>' + e.features[0].properties.name + '</b>')
+            .addTo(map);
+    });
+
+    map.on('mouseleave', 'points', function() {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
+});
+
+</script>
+
+</body>
+</html>
