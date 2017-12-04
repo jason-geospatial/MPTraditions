@@ -185,16 +185,6 @@ function isElementOnScreen(id) {
     return bounds.top < window.innerHeight && bounds.bottom > 0;
 }
 
-//get coordinates of mouse pointer
-map.on('mousemove', function (e) {
-    document.getElementById('info').innerHTML =
-        // e.point is the x, y coordinates of the mousemove event relative
-        // to the top-left corner of the map
-        JSON.stringify(e.point) + '<br />' +
-        // e.lngLat is the longitude, latitude geographical position of the event
-        JSON.stringify(e.lngLat);
-});
-
 /// try to animate point on line
 var chineseOrigin = [71.713685289031858, 42.635241828513159];
 var chineseDestination =[72.00207640227292, 42.576616635015583];
